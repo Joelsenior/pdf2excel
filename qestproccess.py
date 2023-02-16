@@ -51,6 +51,7 @@ def beforehand(pdf_str):
 
     re_compile = re.compile('[0-9]+\.')
     split = re_compile.split(pdf_str)
+    print(split)
 
     # 过滤不需要的文字块
     filter_split = []
