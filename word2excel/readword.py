@@ -1,7 +1,5 @@
 """从word中读取段落,并返回至一个列表"""
-import numbers
 import docx
-from mysqlx import Column
 from openpyxl import load_workbook
 def getText(fileName):
     doc = docx.Document(fileName)
