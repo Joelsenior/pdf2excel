@@ -8,19 +8,19 @@ def getText(fileName):
         TextList.append(paragraph.text)
 
     return '\n'.join(TextList)
-
 fileName = r'rawdata.docx'
 print(getText(fileName))
 
-"""创建excel文件,并写入"""
-def write2sheet(ques,ans):
+"""创建excel写入函数,接受数组ques、ans,和文件名excelname,并写入"""
+def write2sheet(ques,ans,excelname):
     handbook = load_workbook('zgt.xlsx')
+    excelname = excelname + '.xlsx'
     sheet = handbook.active
-    nums = range(2, 53)
+    nums = len(ques)
     for num in nums:
-        ques_content = 'b' + str(num)
-        ans_content = 'h' + str(num)
-        sheet[ques_content] = ques
-        sheet[ans_content] = ans
-    handbook.save('zgt0217.xlsx')
+        ques_nums = 'b' + str(num)
+        ans_nums = 'h' + str(num)
+        sheet[ques_nums] = ques[num]
+        sheet[ans_nums] = ans[num]
+    handbook.save(excelname)
     print("数据写入成功！")
