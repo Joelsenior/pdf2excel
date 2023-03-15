@@ -17,7 +17,8 @@ def extract_block(path_name):
             store_flag = True
         elif store_flag and re.match(r'^\d+\．.*', line):
             # result.append(line.strip())
-            result+=line.strip()
+            result+=line
+            # result+=line.strip()
         else:
             store_flag = False
     print('这是块读取结果：',result)
