@@ -7,21 +7,21 @@ def extract_block(path_name):
     """
     with open(path_name, 'r', encoding='utf-8') as f:
         lines = f.readlines()
-        print(lines)
+        print('这是逐行读取的内容：',lines)
     start_flag = '名词解释'
     store_flag = False
-    # result = [] #输出列表
     result = '' #输出字符串
 
     for line in lines:
         if start_flag in line:
             store_flag = True
-        elif store_flag and re.match(r'^\d+\．.*', line):
-            # result.append(line.strip())
+        elif store_flag and re.match(r'^\d+．.*', line):  #匹配1.XX内容
             result+=line
-            # result+=line.strip()
         else:
             store_flag = False
     print('这是块读取结果：',result)
     return(result)
-# print(result)
+
+if __name__ == '__main__':
+    extract_block(r'demo&data\rawdata.txt')
+    
