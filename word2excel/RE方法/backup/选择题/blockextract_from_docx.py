@@ -12,15 +12,15 @@ def extract_block(path_name):
     for paragraph in doc.paragraphs:
         text = paragraph.text + '\n' 
         lines.append(text)
-    # print('这是逐行读取的内容：',lines)
-    start_flag = '填空题'
+    print('这是逐行读取的内容：',lines)
+    start_flag = '单选题'
     store_flag = False
     result = '' #输出字符串
 
     for line in lines:
         if start_flag in line:
             store_flag = True
-        elif store_flag and re.match(r'^\d+．.*', line):  #匹配1.XX内容
+        elif store_flag and re.match(r'^\d+．.*', line) or re.match(r'A.*\n',line) or re.match(r'[A-G].*\n',line) :  #匹配1.XX内容
             result+=line
         else:
             store_flag = False
